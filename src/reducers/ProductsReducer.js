@@ -11,6 +11,7 @@ const ACTIONS = Object.freeze({
   FETCH_ERROR: 'FETCH_ERROR',
   ADD_TO_CART: 'ADD_TO_CART',
   REMOVE_FROM_CART: 'REMOVE_FROM_CART',
+  UPDATE_PRODUCT_COUNT: 'UPDATE_PRODUCT_COUNT',
 });
 
 const reducer = (state, action) => {
@@ -41,6 +42,15 @@ const reducer = (state, action) => {
       return {
         ...state,
         cartData: state.cartData.filter((item) => item.id !== action.payload),
+      };
+    case ACTIONS.UPDATE_PRODUCT_COUNT:
+      return {
+        ...state,
+        cartData: state.cartData.filter((cp) =>
+          cp.id === action.payload.id
+            ? (cp.quantity = action.payload.qty)
+            : cp.quantity
+        ),
       };
     default:
       return { state };

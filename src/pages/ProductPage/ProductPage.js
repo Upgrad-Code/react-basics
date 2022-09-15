@@ -39,6 +39,11 @@ const ProductPage = () => {
                 <Card>
                   <Card.Body>
                     <Card.Text>{p.title}</Card.Text>
+                    <Card.Text>
+                      <strong>
+                        <em>${p.price}</em>
+                      </strong>
+                    </Card.Text>
                     {state.cartData.find((cp) => cp.id === p.id) ? (
                       <Button
                         variant="danger"
