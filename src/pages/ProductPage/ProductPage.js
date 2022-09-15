@@ -81,7 +81,7 @@ const ProductPage = () => {
                 <Card>
                   <Card.Body>
                     <Card.Text>{item.title}</Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
+                    <Button variant="primary">A-TO-C</Button>
                   </Card.Body>
                 </Card>
               </Col>
