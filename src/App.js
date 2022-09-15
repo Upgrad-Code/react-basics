@@ -7,12 +7,16 @@ import './style.css';
 
 export default function App() {
   return (
+    // <React.Fragment>
+    //   <NavBar />
+    //   <Routes>
+    //     <Route path="/" element={<ProductPage />} />
+    //     <Route path="cart" element={<CartPage />} />
+    //   </Routes>
+    // </React.Fragment>
     <React.Fragment>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<ProductPage />} />
-        <Route path="cart" element={<CartPage />} />
-      </Routes>
+      <ProductPage />
+      <CartPage />
     </React.Fragment>
   );
 }

@@ -1,16 +1,22 @@
-import React, { useContext, useState } from 'react';
-import {
-  ProductsContext,
-  useState,
-  useEffect,
-} from '../../contexts/ProductsContext';
+import React, { useContext, useState, useEffect } from 'react';
+import { ProductsContext } from '../../contexts/ProductsContext';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { ACTIONS } from '../../reducers/ProductsReducer';
 
 const CartPage = () => {
   const { state, dispatch } = useContext(ProductsContext);
 
+  console.log(state.cartData);
+
   const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    const calcSum = state.cartData.reduce((acc, cp) => {
+      return acc + cp.price * cp.quantity;
+    }, 0);
+
+    setTotal(calcSum);
+  }, [state.cartData]);
 
   return (
     <Container>
