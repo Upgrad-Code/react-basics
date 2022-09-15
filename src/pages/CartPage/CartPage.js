@@ -5,9 +5,6 @@ import { ACTIONS } from '../../reducers/ProductsReducer';
 
 const CartPage = () => {
   const { state, dispatch } = useContext(ProductsContext);
-
-  console.log(state.cartData);
-
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
@@ -26,7 +23,7 @@ const CartPage = () => {
         ) : (
           <React.Fragment>
             <Col md={12} className="my-5">
-              <h2>Total : {total}</h2>
+              <h2>Total : ${total}</h2>
             </Col>
             {state.cartData &&
               state.cartData.map((cp) => {
