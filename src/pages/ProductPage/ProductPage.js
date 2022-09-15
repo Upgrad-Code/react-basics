@@ -43,12 +43,22 @@ const ProductPage = () => {
   console.log(state);
 
   useEffect(() => {
+    dispatch({
+      type: ACTIONS.FETCH_START,
+    });
     (async () => {
-      const data = await GET_JSON(API_URL);
-      dispatch({
-        type: ACTIONS.FETCH_SUCCESS,
-        payload: data.products,
-      });
+      try {
+        const data = await GET_JSON(API_URL);
+        dispatch({
+          type: ACTIONS.FETCH_SUCCESS,
+          payload: data.products,
+        });
+      } catch (error) {
+        dispatch({
+          type: ACTIONS.FETCH_ERROR,
+          payload: error,
+        });
+      }
     })();
   }, []);
 
