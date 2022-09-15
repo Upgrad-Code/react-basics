@@ -1,46 +1,13 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { ProductsContext } from '../../contexts/ProductsContext';
 import { API_URL } from '../../helpers/config ';
 import { GET_JSON } from '../../helpers/helperFn';
+import { ACTIONS } from '../../reducers/ProductsReducer';
 
-const iState = {
-  isLoading: false,
-  data: [],
-  error: null,
-};
-
-const ACTIONS = Object.freeze({
-  FETCH_START: 'FETCH_START',
-  FETCH_SUCCESS: 'FETCH_SUCCESS',
-  FETCH_ERROR: 'FETCH_ERROR',
-});
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case ACTIONS.FETCH_START:
-      return {
-        ...state,
-        isLoading: true,
-      };
-    case ACTIONS.FETCH_SUCCESS:
-      return {
-        ...state,
-        isLoading: false,
-        data: action.payload,
-      };
-    case ACTIONS.FETCH_ERROR:
-      return {
-        ...state,
-        isLoading: false,
-        error: action.payload,
-      };
-    default:
-      return { state };
-  }
-};
 const ProductPage = () => {
-  const [state, dispatch] = useReducer(reducer, iState);
-  console.log(state);
+  const { state, dispatch } = useContext(ProductsContext);
+  // console.log(state, 'Products page...');
 
   useEffect(() => {
     dispatch({
@@ -60,28 +27,51 @@ const ProductPage = () => {
         });
       }
     })();
-  }, []);
+  }, [dispatch]);
 
   return (
     <Container>
       <Row>
         {state.data &&
-          state.data.map((item) => {
+          state.data.map((p) => {
             return (
-              <Col md={3} key={item.id}>
-                {/* <Figure>
-                  <Figure.Image
-                    width={171}
-                    height={180}
-                    alt="171x180"
-                    src={item.thumbnail}
-                  />
-                  <Figure.Caption>{item.title}</Figure.Caption>
-                </Figure> */}
+              <Col md={3} key={p.id}>
                 <Card>
                   <Card.Body>
-                    <Card.Text>{item.title}</Card.Text>
-                    <Button variant="primary">A-TO-C</Button>
+                    <Card.Text>{p.title}</Card.Text>
+                    {state.cartData.find((cp) => cp.id === p.id) ? (
+                      <Button
+                        variant="danger"
+                        size="sm"
+                        onClick={() => {
+                          dispatch({
+                            type: ACTIONS.REMOVE_FROM_CART,
+                            payload: p.id,
+                          });
+                        }}
+                      >
+                        R-FROM-C
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="primary"
+                        size="sm"
+                        onClick={() => {
+                          dispatch({
+                            type: ACTIONS.ADD_TO_CART,
+                            payload: {
+                              id: p.id,
+                              title: p.title,
+                              thumbnail: p.thumbnail,
+                              price: p.price,
+                              quantity: 1,
+                            },
+                          });
+                        }}
+                      >
+                        A-TO-C
+                      </Button>
+                    )}
                   </Card.Body>
                 </Card>
               </Col>
