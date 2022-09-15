@@ -9,37 +9,25 @@ const ProductPage = () => {
   const { state, dispatch } = useContext(ProductsContext);
 
   useEffect(() => {
-    let subscribed = true;
+    dispatch({
+      type: ACTIONS.FETCH_START,
+    });
 
-    if (subscribed) {
-      dispatch({
-        type: ACTIONS.FETCH_START,
-      });
-    }
     (async () => {
       try {
         const data = await GET_JSON(API_URL);
-
-        if (subscribed) {
-          dispatch({
-            type: ACTIONS.FETCH_SUCCESS,
-            payload: data.products,
-          });
-        }
+        dispatch({
+          type: ACTIONS.FETCH_SUCCESS,
+          payload: data.products,
+        });
       } catch (error) {
-        if (subscribed) {
-          dispatch({
-            type: ACTIONS.FETCH_ERROR,
-            payload: error,
-          });
-        }
+        dispatch({
+          type: ACTIONS.FETCH_ERROR,
+          payload: error,
+        });
       }
     })();
-
-    return () => {
-      subscribed = false;
-    };
-  }, [dispatch]);
+  }, []);
 
   return (
     <Container>
