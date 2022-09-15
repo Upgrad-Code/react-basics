@@ -1,5 +1,5 @@
 import React, { useReducer, useEffect } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { API_URL } from '../../helpers/config ';
 import { GET_JSON } from '../../helpers/helperFn';
 
@@ -65,7 +65,28 @@ const ProductPage = () => {
   return (
     <Container>
       <Row>
-        <Col>Product page...</Col>
+        {state.data &&
+          state.data.map((item) => {
+            return (
+              <Col md={3} key={item.id}>
+                {/* <Figure>
+                  <Figure.Image
+                    width={171}
+                    height={180}
+                    alt="171x180"
+                    src={item.thumbnail}
+                  />
+                  <Figure.Caption>{item.title}</Figure.Caption>
+                </Figure> */}
+                <Card>
+                  <Card.Body>
+                    <Card.Text>{item.title}</Card.Text>
+                    <Button variant="primary">Go somewhere</Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            );
+          })}
       </Row>
     </Container>
   );
