@@ -7,7 +7,6 @@ import { ACTIONS } from '../../reducers/ProductsReducer';
 
 const ProductPage = () => {
   const { state, dispatch } = useContext(ProductsContext);
-  // console.log(state, 'Products page...');
 
   useEffect(() => {
     dispatch({
