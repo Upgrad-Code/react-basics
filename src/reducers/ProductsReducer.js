@@ -14,7 +14,6 @@ const ACTIONS = Object.freeze({
 });
 
 const reducer = (state, action) => {
-  console.log(action);
   switch (action.type) {
     case ACTIONS.FETCH_START:
       return {

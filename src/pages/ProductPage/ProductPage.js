@@ -9,23 +9,36 @@ const ProductPage = () => {
   const { state, dispatch } = useContext(ProductsContext);
 
   useEffect(() => {
-    dispatch({
-      type: ACTIONS.FETCH_START,
-    });
+    let subscribed = true;
+
+    if (subscribed) {
+      dispatch({
+        type: ACTIONS.FETCH_START,
+      });
+    }
     (async () => {
       try {
         const data = await GET_JSON(API_URL);
-        dispatch({
-          type: ACTIONS.FETCH_SUCCESS,
-          payload: data.products,
-        });
+
+        if (subscribed) {
+          dispatch({
+            type: ACTIONS.FETCH_SUCCESS,
+            payload: data.products,
+          });
+        }
       } catch (error) {
-        dispatch({
-          type: ACTIONS.FETCH_ERROR,
-          payload: error,
-        });
+        if (subscribed) {
+          dispatch({
+            type: ACTIONS.FETCH_ERROR,
+            payload: error,
+          });
+        }
       }
     })();
+
+    return () => {
+      subscribed = false;
+    };
   }, [dispatch]);
 
   return (
