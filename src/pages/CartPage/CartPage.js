@@ -28,7 +28,7 @@ const CartPage = () => {
             {state.cartData &&
               state.cartData.map((cp) => {
                 return (
-                  <Col md={3} key={cp.id}>
+                  <Col md={6} key={cp.id}>
                     <Card>
                       <Card.Body>
                         <Card.Text>{cp.title}</Card.Text>

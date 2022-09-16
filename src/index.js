@@ -17,9 +17,7 @@ root.render(
   //   </BrowserRouter>
   // </StrictMode>
 
-  // <BrowserRouter>
   <ProductsContextProvider>
     <App />
   </ProductsContextProvider>
-  // </BrowserRouter>
 );

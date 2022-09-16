@@ -35,7 +35,7 @@ const ProductPage = () => {
         {state.data &&
           state.data.map((p) => {
             return (
-              <Col md={3} key={p.id}>
+              <Col md={6} key={p.id}>
                 <Card>
                   <Card.Body>
                     <Card.Text>{p.title}</Card.Text>
