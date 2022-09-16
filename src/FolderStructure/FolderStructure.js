@@ -6,7 +6,7 @@ const FolderStructure = ({ explorer }) => {
   const hasChildren = explorer.items && explorer.items.length;
   return (
     <>
-      <span className="px-2" onClick={() => setToggle(!toggle)}>
+      <span className="px-2" onClick={() => setToggle(!toggle)} style={{display: "block"}}>
         {explorer.name}
       </span>
       <div className="px-4" style={{ display: toggle ? 'block' : 'none' }}>

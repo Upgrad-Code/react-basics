@@ -106,31 +106,31 @@ export const explorer = {
             },
           ],
         },
-        {
-          name: 'App.js',
-          isFolder: false,
-        },
-        {
-          name: 'fileStructure.js',
-          isFolder: false,
-        },
-        {
-          name: 'index.js',
-          isFolder: false,
-        },
-        {
-          name: 'style.css',
-          isFolder: false,
-        },
-        {
-          name: 'package.json',
-          isFolder: false,
-        },
-        {
-          name: 'README.md',
-          isFolder: false,
-        },
       ],
+    },
+    {
+      name: 'App.js',
+      isFolder: false,
+    },
+    {
+      name: 'fileStructure.js',
+      isFolder: false,
+    },
+    {
+      name: 'index.js',
+      isFolder: false,
+    },
+    {
+      name: 'style.css',
+      isFolder: false,
+    },
+    {
+      name: 'package.json',
+      isFolder: false,
+    },
+    {
+      name: 'README.md',
+      isFolder: false,
     },
   ],
 };
