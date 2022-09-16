@@ -3,6 +3,7 @@ import React from 'react';
 import NavBar from './components/NavBar/NavBar';
 import ProductPage from './pages/ProductPage/ProductPage';
 import CartPage from './pages/CartPage/CartPage';
+import FolderStructure from './pages/FolderStructure/FolderStructure';
 import { Container, Row, Col } from 'react-bootstrap';
 import './style.css';
 
@@ -19,12 +20,16 @@ export default function App() {
       <Container>
         <Row>
           <Col md={6}>
-            <h5>Product Page...</h5>
+            <h6>Product Page...</h6>
             <ProductPage />
           </Col>
           <Col md={6}>
-            <h5>Cart Page...</h5>
+            <h6>Cart Page...</h6>
             <CartPage />
+          </Col>
+          <Col md={12}>
+            <h6>Folder Structure...</h6>
+            <FolderStructure />
           </Col>
         </Row>
       </Container>
