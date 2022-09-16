@@ -1,7 +1,8 @@
 import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 
-const FolderStructure = () => {
-  return <p>Folder Strucure</p>;
+const FolderStructure = ({ explorer }) => {
+  return <span>{explorer.name}</span>;
 };
 
 export default FolderStructure;

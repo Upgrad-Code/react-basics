@@ -3,8 +3,9 @@ import React from 'react';
 import NavBar from './components/NavBar/NavBar';
 import ProductPage from './pages/ProductPage/ProductPage';
 import CartPage from './pages/CartPage/CartPage';
-import FolderStructure from './pages/FolderStructure/FolderStructure';
+import FolderStructure from './FolderStructure/FolderStructure';
 import { Container, Row, Col } from 'react-bootstrap';
+import { explorer } from './FolderStructure/data';
 import './style.css';
 
 export default function App() {
@@ -29,7 +30,7 @@ export default function App() {
           </Col>
           <Col md={12}>
             <h6>Folder Structure...</h6>
-            <FolderStructure />
+            <FolderStructure explorer={explorer} />
           </Col>
         </Row>
       </Container>
